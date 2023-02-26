@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -13,7 +13,7 @@ export class StefamonService {
   ) { }
 
   list(): Observable<any> {
-    return this.http.get(`${environment.urlBackend}/stefamon`);
+    return this.http.get(`${environment.urlBackend}/stefamon/todos`);
   }
 
 }

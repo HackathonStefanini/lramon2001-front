@@ -9,7 +9,7 @@ import { StefamonService } from '../../shared/services/stefamon.service';
 })
 export class StefamonComponent implements OnInit {
 
-  stefamonList = [{nome: "rockitten", urlFoto: "https://raw.githubusercontent.com/Tuxemon/Tuxemon/development/mods/tuxemon/gfx/sprites/battle/rockitten-front.png"}];
+  stefamonList = [];
 
   constructor(
     private stefamonService: StefamonService
