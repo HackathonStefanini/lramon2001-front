@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   constructor(
-    router: Router
+    private router: Router,
+    private login: LoginService
+
   ){
 
   }
@@ -28,12 +31,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('teste')
+    
     if (this.loginForm.valid) {
-      console.log('Formulário válido');
-      // this.router.navigate("/stefamon");
+       this.login.logar(this.loginForm.value.username, this.loginForm.value.password).subscribe(logado=>
+        {
+          if(logado == true){
+            this.router.navigate(["/stefamon"]);
+          }
+          
+        }
+      
+        );
+    
     } else {
-      console.log('Formulário inválido');
+      alert('Formulário inválido');
     }
   }
 

@@ -1,6 +1,7 @@
+import { ServiceService } from './service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CadastroComponent implements OnInit {
   cadastroForm: FormGroup;
 
-  constructor() { }
+  constructor(private service: ServiceService,private router: Router) { }
 
   ngOnInit() {
     this.cadastroForm = new FormGroup({
@@ -27,10 +28,16 @@ export class CadastroComponent implements OnInit {
     console.log('teste')
     if (this.cadastroForm.valid) {
       console.log('Formulário válido');
-      // this.router.navigate("/stefamon");
+      if (this.cadastroForm.valid) {
+        this.service.cadastrar(this.cadastroForm.value.username, this.cadastroForm.value.password).subscribe(logado=>{
+          this.router.navigate(["/stefamon"]);
+        }
+
+         );
     } else {
       console.log('Formulário inválido');
     }
   }
 
+}
 }

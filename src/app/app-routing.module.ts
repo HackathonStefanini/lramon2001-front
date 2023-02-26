@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'batalha', component: BatalhaComponent },
   { path: 'stefamon', component: StefamonComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
+  
 ];
 
 @NgModule({
