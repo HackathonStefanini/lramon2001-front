@@ -65,6 +65,12 @@ public class JogadorResource {
         return Response.status(Response.Status.OK).entity(jogadorService.batalhar(jogador1,jogador2)).build();
     }
 
+    @GET
+    @Path("/batalhar/bot")
+    public Response batalharBot(@Valid Jogador jogador1) {
+        return Response.status(Response.Status.OK).entity(jogadorService.batalharBot(jogador1)).build();
+    }
+
 
 
 

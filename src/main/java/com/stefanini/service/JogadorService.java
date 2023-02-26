@@ -8,6 +8,7 @@ import com.stefanini.repository.JogadorRepository;
 import com.stefanini.repository.StefamonRepository;
 
 import java.util.Objects;
+import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
@@ -19,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 @ApplicationScoped
 public class JogadorService {
@@ -88,5 +90,15 @@ public class JogadorService {
         long somaJogador2= jogador2.getStefamons().stream().mapToInt(Stefamon::getPreco).sum();
 
         return somaJogador1 > somaJogador2 ? jogador1.getId() : jogador2.getId();
+    }
+
+    public long batalharBot(@Valid Jogador jogador1) {
+        Random rand = new Random();
+        int resultado = rand.nextInt(10) + 1;
+        if(resultado <= 9) {
+            return jogador1.getId();
+        } else {
+            return 0;
+        }
     }
 }
